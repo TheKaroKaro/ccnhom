@@ -6,14 +6,13 @@ import {
   IconCsat,
   IconCurve,
   IconLogo,
-  IconShield,
   IconShrink,
   IconSwap,
   IconCoffee,
   Reveal,
 } from "./components";
 
-export const COFFEE_URL = "https://buymeacoffee.com/nhom";
+export const COFFEE_URL = "https://buymeacoffee.com/nhomlabs";
 
 type TabId = "chart" | "shrinkage" | "erlang" | "csat" | "coaching" | "swap";
 
@@ -139,10 +138,6 @@ export default function App() {
               </button>
             );
           })}
-          <span className="ml-auto hidden items-center gap-1.5 pl-3 text-[11px] font-medium text-ink-500 md:flex">
-            <IconShield className="h-4 w-4 text-chart-green" />
-            100% client-side — your data never leaves this tab
-          </span>
         </div>
       </nav>
 
