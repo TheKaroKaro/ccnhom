@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #dce8ff;
+  --color-brand-200: #b9d0ff;
+  --color-brand-300: #8fb2ff;
+  --color-brand-400: #5f8dff;
+  --color-brand-500: #2e6bff;
+  --color-brand-600: #1a55e8;
+  --color-brand-700: #1244c4;
+  --color-brand-800: #0d3499;
+  --color-brand-900: #0d2468;
+
+  --color-navy-950: #081231;
+  --color-navy-900: #0d1f4d;
+  --color-navy-800: #122a63;
+  --color-navy-700: #1a3a7f;
+
+  --color-paper: #f5f7fb;
+  --color-line: #e3e9f3;
+  --color-ink-900: #101828;
+  --color-ink-700: #33415c;
+  --color-ink-500: #64748b;
+
+  --color-chart-blue: #2e6bff;
+  --color-chart-green: #10b981;
+  --color-chart-orange: #ff9f1c;
+  --color-chart-red: #ef476f;
+  --color-chart-purple: #7c5cfc;
+  --color-chart-cyan: #06b6d4;
+
+  --font-display: "Space Grotesk", "IBM Plex Sans", ui-sans-serif, sans-serif;
+  --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --shadow-panel: 0 1px 2px rgba(13, 36, 104, 0.06), 0 10px 28px -14px rgba(13, 36, 104, 0.16);
+  --shadow-lift: 0 2px 6px rgba(13, 36, 104, 0.08), 0 20px 44px -18px rgba(13, 36, 104, 0.26);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  color: var(--color-ink-900);
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    linear-gradient(rgba(46, 107, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 107, 255, 0.045) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--color-brand-500);
+  color: #fff;
+}
+
+.navy-scroll::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.navy-scroll::-webkit-scrollbar-thumb {
+  background: rgba(143, 178, 255, 0.35);
+  border-radius: 999px;
+}
+.navy-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.field-input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1.5px solid var(--color-line);
+  background: #fff;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  color: var(--color-ink-900);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  outline: none;
+}
+.field-input:focus {
+  border-color: var(--color-brand-500);
+  box-shadow: 0 0 0 4px rgba(46, 107, 255, 0.14);
+}
+.field-input:hover:not(:focus) {
+  border-color: var(--color-brand-300);
+}
+
+input[type="color"].swatch-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 9px;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  flex: none;
+}
+input[type="color"].swatch-input::-webkit-color-swatch-wrapper {
+  padding: 2px;
+}
+input[type="color"].swatch-input::-webkit-color-swatch {
+  border: 2px solid rgba(13, 36, 104, 0.18);
+  border-radius: 8px;
+}
+input[type="color"].swatch-input::-moz-color-swatch {
+  border: 2px solid rgba(13, 36, 104, 0.18);
+  border-radius: 8px;
+}
+
+.checker {
+  background-color: #eef1f7;
+  background-image:
+    linear-gradient(45deg, #dce2ee 25%, transparent 25%, transparent 75%, #dce2ee 75%),
+    linear-gradient(45deg, #dce2ee 25%, transparent 25%, transparent 75%, #dce2ee 75%);
+  background-size: 18px 18px;
+  background-position: 0 0, 9px 9px;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker-track {
+  animation: ticker-scroll 38s linear infinite;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise-in {
+  animation: rise-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes flash-panel {
+  0% { box-shadow: 0 0 0 0 rgba(46, 107, 255, 0.5); }
+  100% { box-shadow: 0 0 0 14px rgba(46, 107, 255, 0); }
+}
+.flash-once {
+  animation: flash-panel 0.7s ease-out both;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.78); }
+}
+.pulse-dot {
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes bar-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.bar-grow {
+  transform-origin: left center;
+  animation: bar-grow 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes draw-line {
+  from { stroke-dashoffset: var(--dash, 1200); }
+  to { stroke-dashoffset: 0; }
+}
+.draw-line {
+  stroke-dasharray: var(--dash, 1200);
+  animation: draw-line 1.1s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
